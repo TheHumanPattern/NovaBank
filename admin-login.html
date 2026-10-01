@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In | NovaBank</title>
+  <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #eaf2fb, #f7f9fc);
+      color: #17324d;
+      font-family: Arial, sans-serif;
+    }
+
+    .auth-container {
+      width: min(100% - 32px, 460px);
+      margin: 32px auto;
+    }
+
+    .auth-card {
+      padding: 36px;
+      border: 1px solid #dce5ef;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 48px rgba(23, 50, 77, 0.12);
+    }
+
+    .auth-card h1 {
+      margin: 0 0 10px;
+      color: #123b63;
+      font-size: 1.8rem;
+    }
+
+    .auth-card p {
+      margin: 0 0 26px;
+      color: #61758a;
+      line-height: 1.5;
+    }
+
+    .auth-card label {
+      display: block;
+      margin: 16px 0 7px;
+      color: #29445e;
+      font-weight: 600;
+    }
+
+    .auth-card input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #cbd7e3;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    .auth-card input:focus {
+      border-color: #145da0;
+      outline: 3px solid rgba(20, 93, 160, 0.14);
+    }
+
+    .auth-card button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 13px;
+      border: 0;
+      border-radius: 8px;
+      background: #145da0;
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .auth-card button:hover {
+      background: #0e477d;
+    }
+
+    .auth-card > a {
+      display: inline-block;
+      margin-top: 22px;
+      color: #145da0;
+      text-decoration: none;
+    }
+
+    .auth-card > a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="auth-container">
+    <section class="auth-card">
+      <h1>NovaBank Admin</h1>
+      <p>Sign in to manage customer applications.</p>
+
+      <form action="/admin/login" method="POST">
+        <label for="email">Admin email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button type="submit">Sign in</button>
+      </form>
+
+      <a href="index.html">Return to NovaBank</a>
+    </section>
+  </main>
+</body>
+</html>

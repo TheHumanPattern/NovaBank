@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | NovaBank</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .admin-page {
+      max-width: 1100px;
+      margin: 48px auto;
+      padding: 24px;
+    }
+
+    .admin-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .admin-card {
+      padding: 24px;
+      background: #fff;
+      border: 1px solid #dce5ef;
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(20, 45, 75, 0.08);
+    }
+
+    .admin-table-wrap {
+      overflow-x: auto;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #e5ebf2;
+      white-space: nowrap;
+    }
+
+    .admin-table th {
+      color: #34506c;
+      font-size: 0.9rem;
+    }
+
+    .admin-status {
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    @media (max-width: 600px) {
+      .admin-page {
+        margin: 24px auto;
+        padding: 16px;
+      }
+
+      .admin-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .admin-card {
+        padding: 16px;
+      }
+    }
+        body {
+      min-height: 100vh;
+      background: #f2f6fb;
+      color: #17324d;
+    }
+
+    .admin-page {
+      max-width: 1180px;
+      margin: 48px auto;
+      padding: 24px;
+    }
+
+    .admin-heading h1 {
+      margin-bottom: 8px;
+      color: #123b63;
+      font-size: 2rem;
+    }
+
+    .admin-heading p {
+      margin-top: 0;
+      color: #61758a;
+    }
+
+    .admin-heading button,
+    .admin-table button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      background: #145da0;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .admin-heading button:hover,
+    .admin-table button:hover {
+      background: #0e477d;
+    }
+
+    .admin-card {
+      overflow: hidden;
+      padding: 0;
+      border: 1px solid #dce5ef;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 12px 32px rgba(23, 50, 77, 0.08);
+    }
+
+    .admin-table {
+      min-width: 850px;
+    }
+
+    .admin-table th {
+      background: #f7f9fc;
+      color: #536b82;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .admin-table td {
+      color: #29445e;
+      vertical-align: middle;
+    }
+
+    .admin-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .admin-table td form {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+    }
+
+    .admin-table button {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+
+    .admin-status {
+      color: #145da0;
+    }
+        .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin: 0 0 24px;
+    }
+
+    .admin-stat {
+      padding: 20px;
+      border: 1px solid #dce5ef;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(23, 50, 77, 0.06);
+    }
+
+    .admin-stat span {
+      display: block;
+      margin-bottom: 12px;
+      color: #61758a;
+      font-size: 0.9rem;
+    }
+
+    .admin-stat strong {
+      color: #123b63;
+      font-size: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .admin-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 440px) {
+      .admin-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+        .admin-stats,
+    .admin-stat {
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .admin-stat {
+      overflow: hidden;
+    }
+
+    .admin-stat span {
+      font-size: 0.82rem;
+      line-height: 1.4;
+      overflow-wrap: anywhere;
+    }
+
+    .admin-stat strong {
+      max-width: 100%;
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand wordmark" href="/" aria-label="NovaBank home">
+      <span>NOVA</span><span class="wordmark-bank">BANK</span>
+    </a>
+  </header>
+
+  <main class="admin-page">
+    <div class="admin-heading">
+      <div>
+        <h1>Customer applications</h1>
+        <p>Review and manage NovaBank customer accounts.</p>
+      </div>
+
+      <form action="/admin/logout" method="POST">
+        <button type="submit">Sign out</button>
+      </form>
+    </div>
+        <section class="admin-stats" aria-label="Account overview">
+      <article class="admin-stat">
+        <span>Total customers</span>
+        <strong>{{TOTAL_ACCOUNTS}}</strong>
+      </article>
+
+      <article class="admin-stat">
+        <span>Pending applications</span>
+        <strong>{{PENDING_ACCOUNTS}}</strong>
+      </article>
+
+      <article class="admin-stat">
+        <span>Active accounts</span>
+        <strong>{{ACTIVE_ACCOUNTS}}</strong>
+      </article>
+
+      <article class="admin-stat">
+        <span>Suspended accounts</span>
+        <strong>{{SUSPENDED_ACCOUNTS}}</strong>
+      </article>
+    </section>
+    <section class="admin-card">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Account type</th>
+              <th>Account number</th>
+              <th>Status</th>
+              <th>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{APPLICATION_ROWS}}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

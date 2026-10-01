@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open an account | NovaBank</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand wordmark" href="index.html" aria-label="NovaBank home">
+      <span>NOVA</span><span class="wordmark-bank">BANK</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="accounts.html">Accounts</a>
+      <a href="signin.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="application-layout">
+    <section class="application-intro">
+      <p class="eyebrow">GET STARTED</p>
+      <h1>Let’s find the right account for you.</h1>
+      <p>Share a few details and choose the account you’re interested in.</p>
+    </section>
+
+    <section class="application-card">
+      <h2>Open an account</h2>
+      <p class="application-help">Tell us a little about yourself.</p>
+
+      <form method="post" action="/api/register">
+        <label for="full-name">Full name</label>
+        <input
+          type="text"
+          id="full-name"
+          name="full-name"
+          autocomplete="name"
+          required
+        >
+
+        <label for="application-email">Email address</label>
+        <input
+          type="email"
+          id="application-email"
+          name="email"
+          autocomplete="email"
+          required
+        >
+
+        <label for="account-type">Which account are you interested in?</label>
+        <select id="account-type" name="account-type" required>
+          <option value="">Choose an account</option>
+          <option value="checking">Checking</option>
+          <option value="savings">Savings</option>
+        </select>
+        <label for="new-password">Create a password</label>
+<input
+  type="password"
+  id="new-password"
+  name="password"
+  autocomplete="new-password"
+  minlength="12"
+  required
+>
+
+        <button class="button application-button" type="submit">
+          Continue
+        </button>
+      </form>
+
+      <p class="application-back">
+        Already have an account?
+        <a href="signin.html">Sign in</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <a class="brand footer-brand" href="index.html">NovaBank</a>
+        <p>Simple banking for everyday life.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="accounts.html">Accounts</a>
+        <a href="help.html">Help</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+
+    <p class="copyright">&copy; 2026 NovaBank</p>
+  </footer>
+
+</body>
+</html>

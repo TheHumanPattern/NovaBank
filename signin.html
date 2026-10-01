@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | NovaBank</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand wordmark" href="index.html" aria-label="NovaBank home">
+      <span>NOVA</span><span class="wordmark-bank">BANK</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#accounts">Accounts</a>
+    </nav>
+  </header>
+
+  <main class="signin-layout">
+    <section class="signin-intro">
+      <p class="eyebrow">WELCOME BACK</p>
+      <h1>Your money, all in one place.</h1>
+      <p>Sign in to manage your NovaBank accounts.</p>
+    </section>
+
+    <section class="signin-card">
+      <h2>Sign in</h2>
+      <p class="signin-help">Enter your details to continue.</p>
+
+      <form method="post" action="/api/login">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        >
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <a class="forgot-link" href="#">Forgot password?</a>
+
+        <button class="button signin-button" type="submit">Sign in</button>
+      </form>
+
+      <p class="signin-back"><a href="index.html">Return to NovaBank home</a></p>
+    </section>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My account | NovaBank</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="dashboard-body">
+
+  <header class="site-header dashboard-header">
+    <details class="dashboard-menu">
+      <summary>Menu</summary>
+      <nav class="dashboard-dropdown" aria-label="Account menu">
+        <a href="#overview">Overview</a>
+        <a href="#transfers">Transfer funds</a>
+        <a href="#bills">Pay bills</a>
+        <a href="#loans">Loan options</a>
+        <a href="#transactions">Transaction history</a>
+        <a href="#referrals">Referrals</a>
+      </nav>
+    </details>
+
+    <a class="brand wordmark" href="/" aria-label="NovaBank home">
+      <span>NOVA</span><span class="wordmark-bank">BANK</span>
+    </a>
+    <button
+  class="theme-toggle"
+  id="theme-toggle"
+  type="button"
+  aria-pressed="false"
+  aria-label="Switch to dark mode"
+  title="Switch to dark mode"
+>
+  ☀
+</button>
+    <form class="signout-form" method="post" action="/api/logout">
+      <button class="button button-small" type="submit">Sign out</button>
+    </form>
+  </header>
+
+  <main class="dashboard-page">
+    <section class="dashboard-welcome" id="overview">
+      <p class="eyebrow">YOUR NOVABANK</p>
+      <h1>Welcome, {{CUSTOMER_NAME}}.</h1>
+      <p>Here’s your account overview.</p>
+    </section>
+
+    <section class="dashboard-card">
+      <div class="card-icon">↗</div>
+      <p class="eyebrow">YOUR SELECTED ACCOUNT</p>
+      <h2>{{ACCOUNT_TYPE}} account</h2>
+      <p class="account-number-label">ACCOUNT NUMBER</p>
+      <p class="account-number">{{ACCOUNT_NUMBER}}</p>
+      <p>Account information and activity will appear here.</p>
+    </section>
+
+    <section class="dashboard-section" id="transfers">
+      <h2>Transfer funds</h2>
+      <p>Move money between eligible accounts.</p>
+      <button class="button" type="button">Start a transfer</button>
+    </section>
+
+    <section class="dashboard-section" id="bills">
+      <h2>Pay bills</h2>
+      <p>Organize your bill payments in one place.</p>
+      <button class="button" type="button">Manage bills</button>
+    </section>
+
+    <section class="dashboard-section" id="loans">
+      <h2>Loan options</h2>
+      <p>Explore borrowing options that may fit your plans.</p>
+      <button class="button" type="button">Explore options</button>
+    </section>
+
+    <section class="dashboard-section" id="transactions">
+      <h2>Transaction history</h2>
+      <p>Your transaction history will appear here after activity is recorded.</p>
+    </section>
+
+    <section class="dashboard-section" id="referrals">
+  <p class="eyebrow">REFERRAL REWARDS</p>
+  <h2>Earn a $50 bonus</h2>
+  <p>Get a bonus when an eligible friend opens a qualifying NovaBank account. Offer terms and eligibility requirements apply.</p>
+  <button class="button" type="button">Refer a friend</button>
+</section>
+  </main>
+<script>
+  const themeToggle = document.getElementById("theme-toggle");
+  const savedTheme = localStorage.getItem("novabank-theme") || "light";
+
+  function applyTheme(theme) {
+    const darkMode = theme === "dark";
+    document.body.classList.toggle("dark-mode", darkMode);
+    const label = darkMode ? "Switch to light mode" : "Switch to dark mode";
+themeToggle.textContent = darkMode ? "☾" : "☀";
+themeToggle.setAttribute("aria-label", label);
+themeToggle.title = label;
+    themeToggle.setAttribute("aria-pressed", String(darkMode));
+  }
+
+  applyTheme(savedTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const darkModeIsOn = document.body.classList.contains("dark-mode");
+    const nextTheme = darkModeIsOn ? "light" : "dark";
+
+    localStorage.setItem("novabank-theme", nextTheme);
+    applyTheme(nextTheme);
+  });
+</script>
+</body>
+</html>
